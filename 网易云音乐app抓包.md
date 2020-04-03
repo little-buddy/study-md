@@ -32,3 +32,115 @@ https://p5.music.126.net
 https://d1.music.126.net
 ```
 
+### eapi 类
+
+```
+eapi/**/*
+/ad/loading/current
+/ad/config/get
+/ad/get
+
+/cloudvideo/category/list
+
+/mlivestream/anchor/start-stream/entrance
+
+/delivery/batch-deliver
+
+/v1/user/detail/xxx
+
+/reward/artist/get
+
+/act/playlist/vote/config
+
+/experiment/group/batch/get
+
+/webcache/reslist
+
+/pl/count
+
+/pendant/user/get
+
+/hot/search/info/get
+
+/homepage/block/page
+
+/homepage/dragon/ball/get
+
+/banner/get/v3
+```
+
+```
+http://clientlog3.music.163.com
+	/api/feedback/client/log
+```
+
+```
+https://interface3.music.163.com
+	/eapi/music-vip-membership/client/vip/info
+```
+
+```
+Bug 统计工具貌似用的是 Firebase Crashlytics
+
+	react-native-firebase
+```
+
+
+
+```
+微信授权
+	https://api.weixin.qq.com.sns/oauth2/access_token
+	入参
+		appid
+		secret
+		code
+		grant_type = authorization_code
+	出参
+		access_token
+		expires_in
+		refresh_token
+		openid
+		scope = "snsapi_userinfo"
+		unionid
+		
+
+微信获取用户信息
+	https://api.weixin.qq.com/sns/oauth2/userinfo
+	入参
+		access_token
+		openid
+	出参
+		openid
+		nickname
+		sex
+		language
+		city
+		province
+		country
+		headimgurl
+		privilege
+		unionid
+```
+
+```
+该接口就是纯粹的一个东西
+  https://ac.dun.163yun.com/v2/m/b
+    code
+    msg
+    result
+      timestamp
+      tid
+
+  app默认携带的cookie
+    MUSIC_A
+    deviceId
+    os
+    appver			这个也只有官方正品才有
+    channel			distribution
+    URS_APPID		我不知道是用户的还是 app的
+    buildver		1586 这个只有官方正品才有的
+    machineid		及其id
+    osver				系统版本
+```
+
+/eapi/login/sns?_nmclfl=1
