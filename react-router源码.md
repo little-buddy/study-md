@@ -260,3 +260,176 @@ ProfileMode = 8
 即使是纯组件
 ```
 
+
+
+### widget 初始化配置参数
+
+```
+symbol	 商品
+interval 周期
+container_id 容器id
+datafeed 数据源
+timeframe 设置图表的初始时间范围
+study_count_limit 指标的限制数量
+custom_indicators_getter 自定义指标设置
+time_frames 是图表底部时间范围选择器的选项
+library_path
+width,height,
+fullscreen -> 让图表占据所有空间
+autosize
+toolbar_bg 工具栏颜色
+
+symbol_search_request 延迟搜索，减少请求次数
+
+
+保存/加载的高级api
+charts_storage_url
+client_id
+user_id
+charts_storage_api_version
+load_last_chart
+
+save_load_adapter 桥接层
+	ChartLayouts
+	StudyTemplates
+setting_adapter
+
+
+```
+
+### widget 方法
+
+```
+onShortcut(shortcut,callback) 快捷键
+
+onChartReady
+headerReady
+
+setLanguage(locale)
+setSumbol(symbol,interval,callback)
+remove
+closePopupsAndDialogs
+takeScreenshot
+
+// 更改主题的时候，这里一并修改了
+changeTheme
+addCustomCSSFile
+applyOverrides(overrides)
+applyStudiesOverrides(overrides)
+
+symbolInterval 返回包含 symbol 和 interval 的对象
+```
+
+### 图表方法
+
+```
+onDataLoaded
+	您可以使用此方法返回订阅对象，一遍在加载新历史K线时收到通知
+onSymbolChanged
+onIntervalChanged
+onVisibleRangeChanged
+
+dataReady((interval)=>{})
+	如果K线数据已经被加载或被接收时，图标库将立即调用此回调
+crossHairMoved(({time,price})=>{})
+	每当十字线位置改变
+setVisibleRange(range,options)
+	调整参数以使选定的时间段适合视口
+	
+setSymbol
+setResolution
+resetData 重新请求数据
+setChartType 3分时 1蜡烛条
+setTimezone
+
+
+
+executeActionById
+
+getAllShapes
+getAllStudies
+setEntityVisibility(id,isVisible)
+createStduy(name,forceOverlay,lock,inputs,overrides,options)
+	name 指标名称
+	foceOverlay 强制图表库放在主窗格中
+	lock 是否锁定指标
+	inputs
+	overrides
+	options
+getStudyById
+removeEntity(entityId)
+removeAllStudyies()
+
+createStudyTemplate 创建指标模板
+
+symbol()
+symbolExt()
+resolution()
+getVisibleRange()
+getVisiblePricerRange()
+scrollPosition()
+	返回图表右边到最后一根K线的滚动距离
+defaultScrollPosition()
+	总距离
+chartType()
+
+setZoomEnabled
+setScrollEnabled
+
+
+	
+```
+
+```
+Symbology 配置
+
+volume_precision 显示此商品的成交量数字的小数位
+has_no_volume 是否拥有成交量数据
+has_emtpry_bars 表示datafeed没有返回数据时library是否会生成空的K柱
+
+seconds_multipliers 包含秒周期，datafeed将会自行构建它
+
+
+format
+	price 根据 minmov、pricescale、minmove2 和 fractional 格式化小数
+	volume 将十进制数字格式化为千、百万 或 十亿
+
+intraday_multipliers
+
+has_intraday
+has_seconds
+has_daily
+has_weekly_and_monthly
+
+supported_resolutions
+
+exchange、listed_exchange 仅为某个交易所略称，不做其他用
+description 描述将显示在图表标题栏中
+
+holidays 商品假期列表，将不显示在里面
+```
+
+
+
+```
+目前我们需要的点
+	- 指标的高度设置
+			可能要去内联api去找方法
+	- 可见苦于范围的跨度
+			timeframe
+
+			
+	目前打算，把所有的 k线数据集成到一个环境里面
+		然后所有的数据都更新在那里，rankList就作为一个容器
+		
+		
+- 中英文翻译 -> 因为长短不一，需要校验
+- 绿涨红跌 -> 仅做原红绿颜色对调，有特殊再细调
+- 主题替换	-> 因为只有粗略的颜色标准，需要校验
+- 在线客服 -> 需要购买服务，是自己开发还是购买待定
+- 社区 -> 接口出来的第2天搞定
+- 高级认证/身份认证
+		这里的实名 与 高级认证需要确认 流程再确定，以及新接口
+- 网络监测 -> web端实现方案
+```
+
